@@ -1,0 +1,548 @@
+/* ==========================================================================
+   GBHS Sports Hall of Fame — digital book
+   ========================================================================== */
+
+:root {
+  --gb-green:        #14562F;
+  --gb-green-dark:   #0A2E19;
+  --gb-green-deep:   #061A0E;
+  --gb-green-light:  #2E8B57;
+  --gb-green-glow:   #57C98A;
+
+  --silver-50:  #FBFCFC;
+  --silver-100: #EEF1F2;
+  --silver-200: #DDE2E4;
+  --silver-300: #C4CBCF;
+  --silver-400: #A6AFB4;
+  --silver-500: #868F95;
+  --silver-700: #545C61;
+
+  --ink:      #191D1F;
+  --ink-soft: #464E52;
+
+  --page-w: 520px;
+  --page-h: 720px;
+  --leaf-ms: 820ms;
+
+  --serif:   "Lora", Georgia, "Times New Roman", serif;
+  --display: "Cinzel", Georgia, serif;
+  --cond:    "Oswald", "Arial Narrow", Impact, sans-serif;
+  --ui:      system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --shadow-deep: 0 24px 70px rgba(0,0,0,.55), 0 4px 14px rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--ui);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 50% 12%, #1d4d31 0%, #0d2a1a 45%, #061109 100%),
+    var(--gb-green-deep);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Brushed-metal surface, reused on plates and covers ---------------------- */
+.brushed {
+  background-image:
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,.55) 0 1px,
+      rgba(255,255,255,0)   1px 3px,
+      rgba(0,0,0,.05)       3px 4px),
+    linear-gradient(168deg,
+      #FAFBFB 0%, #D3D9DC 18%, #EFF2F3 34%,
+      #B6BFC4 52%, #E7EBEC 68%, #C0C8CC 84%, #F3F5F6 100%);
+}
+
+/* ==========================================================================
+   Chrome: masthead + controls
+   ========================================================================== */
+
+.masthead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
+}
+.masthead img { height: 38px; width: auto; flex: none; }
+.masthead h1 {
+  margin: 0;
+  font: 600 15px/1.2 var(--display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--silver-100);
+}
+.masthead .anniv {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--silver-400);
+}
+@media (max-width: 760px) { .masthead .anniv { display: none; } }
+
+.stage {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px 8px;
+  perspective: 2600px;
+  min-height: 0;
+}
+
+.controls {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 12px 16px 22px;
+}
+.controls button {
+  font: 500 13px/1 var(--ui);
+  color: var(--silver-100);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, opacity .15s;
+}
+.controls button:hover:not(:disabled) {
+  background: rgba(87,201,138,.2);
+  border-color: var(--gb-green-glow);
+}
+.controls button:disabled { opacity: .3; cursor: default; }
+.controls .folio {
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--silver-400);
+  min-width: 150px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   The book
+   ========================================================================== */
+
+.book {
+  position: relative;
+  width: calc(var(--page-w) * 2);
+  height: var(--page-h);
+  transform-style: preserve-3d;
+  transition: transform var(--leaf-ms) cubic-bezier(.3,.1,.2,1);
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,.55));
+}
+/* Closed at the front, the single visible page sits centred. */
+.book.at-cover  { transform: translateX(calc(var(--page-w) / -2)); }
+.book.at-end    { transform: translateX(calc(var(--page-w) / 2)); }
+
+.leaf {
+  position: absolute;
+  top: 0; left: 50%;
+  width: var(--page-w);
+  height: var(--page-h);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform var(--leaf-ms) cubic-bezier(.4,.05,.25,1);
+}
+.leaf.flipped { transform: rotateY(-180deg); }
+
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  background: var(--silver-50);
+  display: flex;
+  flex-direction: column;
+}
+.face.back { transform: rotateY(180deg); }
+
+/* Gutter shading so the spine reads as a fold. */
+.face.front { border-radius: 0 5px 5px 0; }
+.face.back  { border-radius: 5px 0 0 5px; }
+.face.front::after,
+.face.back::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 44px;
+  pointer-events: none;
+  z-index: 5;
+}
+.face.front::after { left: 0;  background: linear-gradient(90deg, rgba(0,0,0,.26), rgba(0,0,0,0)); }
+.face.back::after  { right: 0; background: linear-gradient(270deg, rgba(0,0,0,.26), rgba(0,0,0,0)); }
+
+/* ==========================================================================
+   Page furniture
+   ========================================================================== */
+
+.page {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 42px 34px;
+  min-height: 0;
+  background:
+    linear-gradient(180deg, rgba(20,86,47,.05), rgba(20,86,47,0) 220px),
+    var(--silver-50);
+}
+.face.front .page { padding-left: 56px; }
+.face.back  .page { padding-right: 56px; }
+
+.page-num {
+  position: absolute;
+  bottom: 14px;
+  font: 500 10px/1 var(--ui);
+  letter-spacing: .18em;
+  color: var(--silver-400);
+}
+.face.front .page-num { right: 24px; }
+.face.back  .page-num { left: 24px; }
+
+.eyebrow {
+  font: 500 10px/1 var(--cond);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gb-green-light);
+  margin-bottom: 14px;
+  flex: none;
+}
+
+/* Engraved nameplate ------------------------------------------------------ */
+.plate { flex: none; margin-bottom: 18px; }
+.plate img { display: block; width: 100%; max-width: 330px; height: auto; }
+
+.nameline { flex: none; margin-bottom: 8px; }
+.nameline h2 {
+  margin: 0;
+  font: 600 34px/1.05 var(--cond);
+  letter-spacing: .01em;
+  color: var(--gb-green);
+}
+.nameline .meta {
+  margin-top: 6px;
+  font: 400 12px/1.4 var(--ui);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--silver-500);
+}
+
+.rule {
+  flex: none;
+  height: 2px;
+  margin: 16px 0 18px;
+  background: linear-gradient(90deg, var(--gb-green), var(--silver-300) 60%, transparent);
+}
+
+.tagline {
+  font: italic 500 15px/1.5 var(--serif);
+  color: var(--gb-green);
+}
+
+/* Portrait page ----------------------------------------------------------- */
+.portrait {
+  flex: 1;
+  min-height: 0;
+  margin: 4px 0 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d1a12;
+  box-shadow: 0 10px 26px rgba(0,0,0,.28), 0 0 0 1px rgba(0,0,0,.1);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Highlights page --------------------------------------------------------- */
+.highlights { list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0; }
+.highlights li {
+  position: relative;
+  padding: 0 0 15px 22px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--silver-200);
+  font: 400 13.5px/1.55 var(--serif);
+  color: var(--ink-soft);
+}
+.highlights li:last-child { border-bottom: 0; }
+.highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 8px; height: 8px;
+  background: var(--gb-green);
+  transform: rotate(45deg);
+}
+.highlights strong {
+  display: block;
+  font: 500 12px/1.3 var(--cond);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gb-green);
+  margin-bottom: 3px;
+}
+
+.note {
+  flex: none;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--gb-green-light);
+  background: rgba(20,86,47,.05);
+  font: 400 12.5px/1.6 var(--serif);
+  color: var(--ink-soft);
+}
+
+/* Gallery page ------------------------------------------------------------ */
+.gallery {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #0d1a12;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  cursor: zoom-in;
+}
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.gallery figure:hover img { transform: scale(1.05); }
+.gallery figure.tall { grid-row: span 2; }
+
+/* Retrospective page ------------------------------------------------------ */
+.retro { flex: 1; min-height: 0; overflow-y: auto; padding-right: 6px; }
+.retro p {
+  margin: 0 0 12px;
+  font: 400 13px/1.7 var(--serif);
+  color: var(--ink-soft);
+  text-align: justify;
+  hyphens: auto;
+}
+.retro p:first-child::first-letter {
+  float: left;
+  font: 600 46px/.86 var(--display);
+  color: var(--gb-green);
+  padding: 4px 8px 0 0;
+}
+.byline {
+  flex: none;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--silver-200);
+  font: 500 12px/1.4 var(--ui);
+  color: var(--gb-green);
+}
+.byline span { display: block; font-weight: 400; color: var(--silver-500); font-size: 11px; margin-top: 2px; }
+
+/* Thin scrollbar inside pages */
+.retro::-webkit-scrollbar { width: 5px; }
+.retro::-webkit-scrollbar-thumb { background: var(--silver-300); border-radius: 3px; }
+
+/* ==========================================================================
+   Special pages: cover, contents, colophon
+   ========================================================================== */
+
+.page.cover,
+.page.backcover {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 44px 40px;
+  color: var(--silver-100);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(87,201,138,.18), transparent 60%),
+    linear-gradient(170deg, #1a5e34 0%, #0d3a1f 42%, #061a0e 100%);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.page.cover::before,
+.page.backcover::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(214,222,226,.34);
+  pointer-events: none;
+}
+.page.cover::after,
+.page.backcover::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(214,222,226,.14);
+  pointer-events: none;
+}
+.cover .crest { width: 168px; height: auto; margin-bottom: 22px; filter: drop-shadow(0 8px 20px rgba(0,0,0,.6)); }
+.cover .school {
+  font: 400 11px/1.5 var(--ui);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--silver-300);
+  margin-bottom: 18px;
+}
+.cover h2 {
+  margin: 0;
+  font: 600 38px/1.12 var(--display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--silver-50);
+  text-shadow: 0 2px 16px rgba(0,0,0,.5);
+}
+.cover .class {
+  margin-top: 16px;
+  padding: 9px 26px;
+  border-top: 1px solid rgba(214,222,226,.3);
+  border-bottom: 1px solid rgba(214,222,226,.3);
+  font: 400 13px/1 var(--cond);
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--gb-green-glow);
+}
+.cover .motto {
+  margin-top: auto;
+  padding-top: 26px;
+  font: 500 13px/1 var(--cond);
+  letter-spacing: .18em;
+  color: var(--silver-300);
+}
+.cover .when { margin-top: 10px; font-size: 11px; letter-spacing: .16em; color: var(--silver-500); text-transform: uppercase; }
+
+/* Contents ---------------------------------------------------------------- */
+.contents { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 2px; }
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 8px;
+  border: 0;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: var(--ui);
+  transition: background .15s;
+}
+.toc-item:hover { background: rgba(20,86,47,.08); }
+.toc-item .idx {
+  font: 500 11px/1 var(--cond);
+  color: var(--silver-400);
+  width: 20px;
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+.toc-item .who { font: 500 14px/1.2 var(--cond); color: var(--gb-green); letter-spacing: .02em; }
+.toc-item .dots { flex: 1; border-bottom: 1px dotted var(--silver-300); transform: translateY(-3px); }
+.toc-item .what { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--silver-500); flex: none; }
+
+.dedication p {
+  font: 400 13px/1.75 var(--serif);
+  color: var(--ink-soft);
+  margin: 0 0 13px;
+}
+
+/* Colophon / QR ----------------------------------------------------------- */
+.colophon { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; }
+.colophon img { width: 150px; height: 150px; background: #fff; padding: 8px; border-radius: 8px; }
+.colophon p { font: 400 12px/1.7 var(--serif); color: var(--ink-soft); margin: 0; max-width: 300px; }
+
+/* ==========================================================================
+   Lightbox
+   ========================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  place-items: center;
+  padding: 5vmin;
+  background: rgba(4,12,7,.93);
+  backdrop-filter: blur(6px);
+}
+.lightbox.open { display: grid; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: var(--shadow-deep);
+}
+.lightbox button {
+  position: absolute;
+  top: 20px; right: 24px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Phone: one page at a time
+   ========================================================================== */
+
+@media (max-width: 900px), (max-height: 620px) {
+  :root { --leaf-ms: 340ms; }
+
+  .stage { padding: 12px 10px 4px; perspective: none; }
+
+  .book {
+    width: min(94vw, 460px);
+    height: min(74dvh, 680px);
+    transform: none !important;
+    filter: drop-shadow(0 14px 30px rgba(0,0,0,.5));
+  }
+
+  /* Leaves stop being sheets; every page becomes its own slide. */
+  .leaf { position: static; width: auto; height: auto; transform: none !important; transition: none; }
+  .face {
+    position: absolute;
+    inset: 0;
+    transform: none !important;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--leaf-ms) ease, transform var(--leaf-ms) ease;
+  }
+  .face.is-current { opacity: 1; pointer-events: auto; z-index: 3; }
+  .face.front::after, .face.back::after { display: none; }
+  .face.front .page, .face.back .page { padding: 26px 22px 30px; }
+
+  .nameline h2 { font-size: 27px; }
+  .plate img { max-width: 260px; }
+  .highlights li { font-size: 12.5px; padding-bottom: 11px; margin-bottom: 10px; }
+  .retro p { font-size: 12.5px; text-align: left; }
+  .cover h2 { font-size: 28px; }
+  .cover .crest { width: 120px; }
+
+  .controls { gap: 10px; padding: 10px 12px 18px; }
+  .controls .folio { min-width: 110px; font-size: 11px; }
+  .controls button { padding: 9px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book, .leaf, .face { transition-duration: 1ms !important; }
+}
+
+/* A leaf caught mid-turn casts its own shadow across the spread. */
+.leaf.turning { filter: drop-shadow(-14px 8px 26px rgba(0,0,0,.42)); }

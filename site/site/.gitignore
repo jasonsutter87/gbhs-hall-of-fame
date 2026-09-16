@@ -1,0 +1,5 @@
+# Local tooling artifacts only. Everything else here is meant to be published.
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
