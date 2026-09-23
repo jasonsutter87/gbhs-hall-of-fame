@@ -325,7 +325,15 @@ body {
 }
 .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
 .gallery figure:hover img { transform: scale(1.05); }
+/* An upright photograph gets an upright frame; a landscape one stays wide.
+   Without this every photo is squeezed into the same mask and heads get cut. */
 .gallery figure.tall { grid-row: span 2; }
+.gallery figure.wide { grid-row: span 1; }
+.gallery figure.full { grid-column: span 2; }
+
+/* Biography page ---------------------------------------------------------- */
+.retro.bio { margin-top: 12px; }
+.retro.bio p { font-size: 12.5px; line-height: 1.66; text-align: left; }
 
 /* Retrospective page ------------------------------------------------------ */
 .retro { flex: 1; min-height: 0; overflow-y: auto; padding-right: 6px; }
@@ -461,6 +469,13 @@ body {
 .colophon { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; }
 .colophon img { width: 150px; height: 150px; background: #fff; padding: 8px; border-radius: 8px; }
 .colophon p { font: 400 12px/1.7 var(--serif); color: var(--ink-soft); margin: 0; max-width: 300px; }
+.colophon .qr-cap {
+  margin-top: -6px;
+  font: 500 10px/1.4 var(--cond);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gb-green);
+}
 
 /* ==========================================================================
    Lightbox
@@ -512,7 +527,18 @@ body {
   }
 
   /* Leaves stop being sheets; every page becomes its own slide. */
-  .leaf { position: static; width: auto; height: auto; transform: none !important; transition: none; }
+  /* A leaf keeps `transform-style: preserve-3d` from the desktop rules, and that
+     makes it a containing block for its absolutely-positioned faces — even
+     though it is `position: static` here. With the leaf collapsed to zero
+     height, every face inset to 0 collapsed with it and the book rendered
+     blank on a phone. Flatten the leaf so the faces size against .book. */
+  .leaf {
+    position: static;
+    width: auto; height: auto;
+    transform: none !important;
+    transform-style: flat;
+    transition: none;
+  }
   .face {
     position: absolute;
     inset: 0;

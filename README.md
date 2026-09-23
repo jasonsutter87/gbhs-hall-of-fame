@@ -36,7 +36,11 @@ as the original slide deck:
 2. **Highlights** — the six career headlines from the program deck
 3. **Gallery** — five more photos (click any to enlarge)
 4. **Retrospective** — the coach's, teammate's, or family member's tribute
-   (falls back to a career note or a feature photo where no retrospective exists yet)
+5. **Biography** — the athlete's own career write-up, where one exists
+
+Most inductees have four pages. Anyone with both a retrospective and a biography
+(Andrew Knapp) gets five, and the spread padding absorbs it automatically. Where
+neither exists yet the fourth page falls back to a career note or a feature photo.
 
 On desktop it renders as a two-page spread with a true 3D page turn. Below 900px it
 becomes a single page with swipe navigation. Arrow keys, Home, and End work throughout.
@@ -46,19 +50,24 @@ becomes a single page with swipe navigation. Arrow keys, Home, and End work thro
 Every inductee has a permanent URL:
 
 ```
-https://<your-pages-url>/#/taylor-nelson
+https://jasonsutter87.github.io/gbhs-hall-of-fame/#/taylor-nelson
 ```
 
 `qr/sheet.html` is a printable page of all 14 QR codes as cut-apart cards — usable as
 table tents at the dinner. Open it in a browser and print to letter paper.
 
-**Regenerate the QR codes once the real URL is known:**
+The back cover carries the branded Hall of Fame QR code
+(`assets/img/ui/qr-hof.png` — the grizzly-crested code, pointing at the site root).
+It is a supplied asset, not generated here; leave it in place unless a new one arrives.
+
+**Regenerate the per-inductee QR codes if the URL changes:**
 
 ```bash
-python build/qr.py https://<user>.github.io/<repo>
+python build/qr.py https://jasonsutter87.github.io/gbhs-hall-of-fame
 ```
 
-That rewrites `assets/img/ui/qr-book.png`, all of `qr/*.png`, and the printable sheet.
+That rewrites `assets/img/ui/qr-book.png` (the plain fallback code), all of
+`qr/*.png`, and the printable sheet.
 
 ## Deploying to GitHub Pages
 
@@ -93,17 +102,54 @@ retro: {
 }
 ```
 
-The page type switches automatically.
+A biography is the same shape without the byline:
+
+```js
+bio: { paras: [ "First paragraph…", "Second paragraph…" ] }
+```
+
+The page types switch automatically. Ryan Loder is the one inductee still
+waiting on a bio — drop one in and his fourth page stops being a photo.
+
+### Photo framing
+
+Every photo is cropped to fill its frame, so two fields control how that crop lands:
+
+- `ar` — the six photos' aspect ratios, written by `build/export.py`. Anything
+  below 0.95 is treated as upright and gets an upright frame in the gallery;
+  the rest get wide frames. Don't hand-edit these; re-run the export instead.
+- `focus` — an override for where a crop is anchored, keyed by photo number:
+
+  ```js
+  focus: { 1: "50% 10%", 4: "58% 12%" }   // "<x> <y>", a CSS object-position
+  ```
+
+  Use it when a centred crop cuts off a head or pushes the subject out of frame.
+  A low `y` pulls the frame up toward the top of the photo; a high `x` pushes it
+  toward the right edge.
 
 ## Replacing photos
 
 `build/picks.json` records which source images were chosen from the original archive,
-by folder index. Change the numbers, then:
+by folder index. An entry can also be a literal path string instead of an index,
+which is how a file renamed since the manifest was built gets picked. The export
+also falls back to a basename search under `inductees/` when a manifest path has
+moved, so a reorganised archive doesn't break the build. Change the numbers, then:
 
 ```bash
 python build/sheet.py     # rebuild the numbered contact sheets to pick from
 python build/export.py    # re-export the web-sized WebP images
 ```
+
+`export.py` takes an optional list of slugs to re-export just those inductees:
+
+```bash
+python build/export.py caitlin-chock ernie-cooper
+```
+
+Run both from the project root (the folder holding `inductees/` and `site/`), not
+from inside `site/`. `build/` there is the working copy; `site/build/` is the
+published mirror — keep the two in sync.
 
 Both scripts expect the original `inductees/` and `elements/` folders one level up
 from the repository — they are deliberately *not* committed here (1.2 GB of raw

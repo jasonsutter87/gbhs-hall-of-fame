@@ -1,10 +1,13 @@
-import os, json, shutil
+import os, sys, json, shutil
 from PIL import Image, ImageOps, ImageChops
 
 man   = json.load(open('_extract/manifest.json'))
 picks = json.load(open('build/picks.json'))
 SITE  = 'site'
 IMG   = os.path.join(SITE,'assets','img')
+
+# Re-export a subset:  python build/export.py caitlin-chock ernie-cooper
+ONLY  = set(sys.argv[1:])
 
 PLATES = {
  'natalie-gulbis':'Gulbis plate.png','betsy-barr':'2 Betsy Barr Plate.png',
@@ -28,13 +31,41 @@ def trim(im):
     bbox = im.getchannel('A').getbbox()
     return im.crop(bbox) if bbox else im
 
+_index = None
+def find(name):
+    """The archive has been reorganised since the manifest was built — files were
+       renamed and subfolders flattened. Fall back to a basename lookup."""
+    global _index
+    if _index is None:
+        _index = {}
+        for dp, _, fn in os.walk('inductees'):
+            for f in fn:
+                _index.setdefault(f.lower(), os.path.join(dp, f))
+    return _index.get(name.lower())
+
+def resolve(pick, files):
+    """A pick is a manifest index, or a literal path."""
+    src = pick if isinstance(pick, str) else files[pick]
+    if os.path.exists(src):
+        return src
+    alt = find(os.path.basename(src))
+    if alt:
+        print('  relocated: %s -> %s' % (os.path.basename(src), alt))
+        return alt
+    raise SystemExit('MISSING SOURCE: ' + src)
+
 out = {}
+try:
+    out = json.load(open('build/exported.json'))
+except Exception:
+    pass
 for idx, meta in picks.items():
     slug  = meta['slug']
+    if ONLY and slug not in ONLY: continue
     files = man[idx]['files']
     rec   = {'slug': slug, 'photos': []}
     for n, i in enumerate(meta['pics'], 1):
-        src = files[i]
+        src = resolve(i, files)
         im  = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
         w,h = save(im, f'{IMG}/photos/{slug}/p{n}.webp', 1500, 80)
         save(im, f'{IMG}/photos/{slug}/t{n}.webp', 500, 72)

@@ -8,6 +8,50 @@
     return IMG + "/photos/" + slug + "/" + (thumb ? "t" : "p") + n + ".webp";
   };
 
+  /* Photos fill their frame, so a centred crop can cut off a head or park the
+     subject off-frame. `focus` in data.js names the object-position for any
+     photo that needs the crop anchored somewhere other than the centre. */
+  /* True when photo n is taller than it is wide. `ar` is written by
+     build/export.py, so the frame can match the photograph. */
+  var upright = function (a, n) {
+    var r = a.ar && a.ar[n - 1];
+    return r ? r < 0.95 : false;
+  };
+
+  /* Lay a gallery out across two columns so upright photos get upright frames
+     and landscape ones get wide frames, with no holes left in the grid.
+     Upright photos are emitted in pairs (a two-row band, one per column); a
+     leftover upright is banded with two landscape photos stacked beside it;
+     landscape photos then fill single cells in pairs, and a final odd one
+     spans the full width. Source order is preserved within each shape. */
+  function lay(a, photos) {
+    var tall = [], wide = [], cells = [];
+    photos.forEach(function (n) { (upright(a, n) ? tall : wide).push(n); });
+
+    while (tall.length >= 2) {
+      cells.push({ n: tall.shift(), cls: "tall" });
+      cells.push({ n: tall.shift(), cls: "tall" });
+    }
+    if (tall.length && wide.length >= 2) {
+      cells.push({ n: tall.shift(), cls: "tall" });
+      cells.push({ n: wide.shift(), cls: "wide" });
+      cells.push({ n: wide.shift(), cls: "wide" });
+    } else if (tall.length) {
+      cells.push({ n: tall.shift(), cls: "tall full" });
+    }
+    while (wide.length >= 2) {
+      cells.push({ n: wide.shift(), cls: "wide" });
+      cells.push({ n: wide.shift(), cls: "wide" });
+    }
+    if (wide.length) cells.push({ n: wide.shift(), cls: "wide full" });
+    return cells;
+  }
+
+  var FOCUS = function (a, n) {
+    var f = a.focus && a.focus[n];
+    return f ? ' style="object-position:' + f + '"' : "";
+  };
+
   /* ---------------------------------------------------------------- pages */
 
   var pages = [];
@@ -25,9 +69,12 @@
     pages.push({ type: "highlights", a: a });
     pages.push({ type: "gallery",    a: a, photos: rest });
 
-    if (a.retro)     pages.push({ type: "retro",   a: a });
-    else if (a.note) pages.push({ type: "note",    a: a });
-    else             pages.push({ type: "feature", a: a, photo: rest[0] });
+    if (a.retro) pages.push({ type: "retro", a: a });
+    if (a.bio)   pages.push({ type: "bio",   a: a });
+    if (!a.retro && !a.bio) {
+      if (a.note) pages.push({ type: "note",    a: a });
+      else        pages.push({ type: "feature", a: a, photo: rest[0] });
+    }
   });
 
   pages.push({ type: "colophon" });
@@ -130,7 +177,7 @@
         page.innerHTML =
           plate(a) +
           '<div class="portrait"><img src="' + PHOTO(a.slug, a.hero) +
-            '" alt="' + esc(a.name) + '" loading="lazy"></div>' +
+            '" alt="' + esc(a.name) + '" loading="lazy"' + FOCUS(a, a.hero) + "></div>" +
           '<div class="tagline">' + esc(a.tagline) + "</div>";
         break;
 
@@ -145,11 +192,11 @@
 
       case "gallery":
         h = '<div class="eyebrow">' + esc(a.name) + "</div><div class=\"gallery\">";
-        p.photos.forEach(function (n, i) {
-          h += '<figure' + (i === 0 ? ' class="tall"' : "") +
-               ' data-full="' + PHOTO(a.slug, n) + '">' +
-               '<img src="' + PHOTO(a.slug, n, true) + '" alt="' + esc(a.name) +
-               '" loading="lazy"></figure>';
+        lay(a, p.photos).forEach(function (c) {
+          h += '<figure class="' + c.cls + '"' +
+               ' data-full="' + PHOTO(a.slug, c.n) + '">' +
+               '<img src="' + PHOTO(a.slug, c.n, true) + '" alt="' + esc(a.name) +
+               '" loading="lazy"' + FOCUS(a, c.n) + "></figure>";
         });
         h += "</div>";
         page.innerHTML = h;
@@ -160,6 +207,14 @@
         a.retro.paras.forEach(function (t) { h += "<p>" + esc(t) + "</p>"; });
         h += '</div><div class="byline">' + esc(a.retro.author) +
              "<span>" + esc(a.retro.role) + "</span></div>";
+        page.innerHTML = h;
+        break;
+
+      case "bio":
+        h = '<div class="eyebrow">Biography</div>' + nameline(a) +
+            '<div class="rule"></div><div class="retro bio">';
+        a.bio.paras.forEach(function (t) { h += "<p>" + esc(t) + "</p>"; });
+        h += "</div>";
         page.innerHTML = h;
         break;
 
@@ -175,7 +230,8 @@
         page.innerHTML =
           '<div class="eyebrow">' + esc(a.name) + "</div>" +
           '<div class="portrait" style="margin-bottom:18px"><img src="' +
-            PHOTO(a.slug, p.photo) + '" alt="' + esc(a.name) + '" loading="lazy"></div>' +
+            PHOTO(a.slug, p.photo) + '" alt="' + esc(a.name) + '" loading="lazy"' +
+            FOCUS(a, p.photo) + "></div>" +
           '<div class="tagline">' + esc(a.tagline) + "</div>";
         break;
 
@@ -183,7 +239,8 @@
         page.className = "page backcover";
         page.innerHTML =
           '<div class="colophon">' +
-            '<img src="' + IMG + '/ui/qr-book.png" alt="QR code linking to this book">' +
+            '<img src="' + IMG + '/ui/qr-hof.png" alt="QR code linking to this program">' +
+            '<p class="qr-cap">Scan to open this program on your phone</p>' +
             "<p>" + esc(DATA.event.title) + " &middot; " + esc(DATA.event.subtitle) + "</p>" +
             "<p>" + esc(DATA.event.date) + "<br>" + esc(DATA.event.venue) + "</p>" +
             "<p>" + esc(DATA.event.contact) + "</p>" +

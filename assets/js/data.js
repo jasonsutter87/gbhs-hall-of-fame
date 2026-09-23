@@ -17,6 +17,7 @@ window.HOF = {
   inductees: [
   {
     n: 1, slug: "natalie-gulbis", hero: 6, name: "Natalie Gulbis",
+    ar: [1.50, 1.39, 1.50, 1.50, 1.31, 1.79],
     year: "Class of 1999", sport: "Golf",
     tagline: "Elite LPGA pro with major impact on and off the course",
     highlights: [
@@ -27,10 +28,19 @@ window.HOF = {
       ["Peak Mid-2000s", "Four top-10 major finishes in 2005; endorsements with TaylorMade-Adidas, Mastercard, Canon"],
       ["Post-Tour Life", "Chronic injuries led to her 2020 retirement; active in media, business, and philanthropy"]
     ],
-    note: "At Granite Bay she played as the leading golfer on the boys' varsity team, earned four varsity letters, and won the 1999 U.S. High School Golf Championship by 21 strokes before graduating early at 16."
+    bio: {
+      paras: [
+        "Natalie Anne Gulbis was born January 7, 1983 in Sacramento, the only child of John and Barbara Gulbis. Her father — a single-digit handicapper whose own family emigrated from Latvia — put a club in her hands at age four, and the fundamentals took hold fast. She won her first junior tournament at seven, broke par for the first time at ten, and at fourteen won the California Women's Amateur and became the youngest amateur ever to Monday-qualify for an LPGA Tour event.",
+        "At Granite Bay High School she played as the leading golfer on the boys' varsity team and earned four varsity letters. In 1999 she won the U.S. High School Golf Championship by twenty-one strokes. She graduated early, at sixteen, and took a scholarship to the University of Arizona, where in a single season she won the NCAA West Regional with a career-low 207 (−9), earned first-team All-Pac-10 and first-team All-America honors, and finished as a Honda Broderick Award finalist.",
+        "She turned professional in July 2001 and joined the LPGA Tour the following season after finishing tied for third at Q-School. As a rookie she posted four top-10s and led the Rookie of the Year race for eleven straight weeks. In 2005 she became the first player in LPGA history to earn more than a million dollars in a season without a win, finishing sixth on the money list. Her victory came at the 2007 Evian Masters, where she closed with a 68 and beat Jeong Jang with a birdie on the first playoff hole.",
+        "Across nineteen seasons Gulbis earned $4,898,506, contributed to U.S. Solheim Cup teams, and carried endorsements with TaylorMade-adidas, Mastercard, Anheuser-Busch and a dozen others. She hosted The Natalie Gulbis Show on Golf Channel and has co-hosted Fox Sports' 18 Holes with Jimmy Hanlin since 2016. Chronic back injuries led to her retirement at the end of 2020. She and her husband, Josh Rodarmel, live in Las Vegas, where the Natalie Gulbis Golf Classic has raised money for the Boys & Girls Clubs of Southern Nevada every year since 2010."
+      ]
+    },
+    focus: { 1: "32% 38%" }
   },
   {
     n: 2, slug: "betsy-barr", hero: 1, name: "Betsy Barr",
+    ar: [1.33, 1.45, 1.52, 1.48, 0.67, 0.73],
     year: "Class of 1999", sport: "Soccer",
     tagline: "From SFL honors to WUSA pro — a career built on excellence",
     highlights: [
@@ -49,10 +59,12 @@ window.HOF = {
         "Over the years, we have shared so many fun moments together, and I especially admire the mental toughness she has shown on the soccer field and in everyday life. Watching her remain determined during challenging games and continue pushing forward after setbacks has taught me the importance of perseverance. Our Mom supported us in every way without ever putting pressure on us, while our Dad, who understood what it took to become a professional athlete, gave us valuable insight into the demands of that life.",
         "At Granite Bay High School, Betsy participated in cross country, basketball, soccer and powder puff, excelling in every sport. Now, I love watching her support her own children as they play soccer. She has shown me that success is not only measured by accomplishments, but also by the determination, kindness, and resilience a person brings to every part of life. I am proud to call her my sister."
       ]
-    }
+    },
+    focus: { 2: "62% 45%", 6: "50% 12%" }
   },
   {
     n: 3, slug: "adam-jennings", hero: 2, name: "Adam Jennings",
+    ar: [1.40, 0.70, 1.33, 0.69, 1.50, 1.50],
     year: "Class of 2001", sport: "Football",
     tagline: "From NFL return specialist to Atlanta entrepreneur and community mentor",
     highlights: [
@@ -62,10 +74,21 @@ window.HOF = {
       ["NFL Receiver & Returner (2006–2009)", "Falcons, Lions, Giants; 46 games as a core special-teams contributor"],
       ["Post-NFL Career", "Atlanta-based real estate and construction; two master's degrees; co-owner of Blaster Concrete"],
       ["Community Mentor", "Youth football coach emphasizing resilience, effort, and life lessons"]
-    ]
+    ],
+    bio: {
+      paras: [
+        "Granite Bay High School has produced its share of talented all-around athletes, but few have matched the versatility Adam Jennings brought to the field. The teams he played on compiled a record of 35-1 over his three varsity seasons. He played flyback for the Grizzlies while handling both kickoff and punt return duties, and as a senior rushed for 1,027 yards and 10 touchdowns and added 40 receptions for 647 yards and 7 touchdowns. He was at his most dangerous with the ball in space — a 97-yard kickoff return against Roseville to open league play in 1999, and a 96-yard return in the Section championship against Oak Ridge that capped his high school scoring career. He was named Sierra Foothill League Offensive MVP and selected to the Sacramento Bee All-Star team, and he ran track to sharpen his football speed, finishing as the Grizzlies' top sprinter throughout his tenure.",
+        "On February 7, 2001 he signed a National Letter of Intent with Fresno State, one of three Granite Bay players in the Bulldogs' 24-man class that year. Recruited as a cornerback on the strength of his speed and quickness, he redshirted and moved to wide receiver in the spring of 2002. Over four seasons in the Western Athletic Conference he appeared in 52 games for 89 receptions, 986 yards and 9 touchdowns; 48 rushes for 337 yards and 3 touchdowns; 98 punt returns for 788 yards and 2 touchdowns; and 72 kickoff returns for 1,803 yards — 3,914 all-purpose yards in all.",
+        "College is where he truly made his name on special teams. Adam earned six \"Hammer\" awards at Fresno State, the most in program history at the time, and was named the team's Special Teams MVP for 2005. He led the WAC in punt returns as a redshirt freshman, posted a career-high five receiving touchdowns as a junior, and closed his senior year averaging 29.0 yards per kickoff return — second in the conference, and first-team All-WAC as the league's premier kickoff returner. At his junior day he was clocked at 4.30 in the 40 across several NFL watches; at 172 pounds he squatted 545 and put up 330 in both the power clean and the bench press. He earned Academic All-WAC recognition beginning in 2003 while studying health science and was one of four Fresno State players named a national Arthur Ashe Jr. Sports Scholar-Athlete.",
+        "At the 2006 NFL Scouting Combine he ran a 4.42-second forty with a 37.5-inch vertical jump, and the Atlanta Falcons selected him in the sixth round, 184th overall. He spent four seasons in the league, appearing in 46 games with the Falcons (2006–2008) and Detroit Lions (2008–2009), catching 6 passes for 62 yards and a touchdown, returning 54 punts for 337 yards and 25 kickoffs for 559 yards, recording 16 special teams tackles and recovering 2 fumbles. He signed with the New York Giants in 2010 before retiring.",
+        "Since football, Adam has built a career in real estate entitlement and development, working with Dark Horse Devco and Southvine Homes. He holds a master's degree in real estate from Georgia State University and a master's in engineering and construction management from the University of Alabama at Birmingham, along with graduate certificates from the Wharton School and Cornell University. He coaches wide receivers at Mount Pisgah Christian School."
+      ]
+    },
+    focus: { 1: "82% 35%", 4: "55% 15%" }
   },
   {
     n: 4, slug: "dallas-sartz", hero: 2, name: "Dallas Sartz",
+    ar: [1.42, 0.71, 0.79, 0.79, 1.50, 1.00],
     year: "Class of 2002", sport: "Football",
     tagline: "Grizzly to Trojan to leader — a legacy built on impact",
     highlights: [
@@ -89,6 +112,7 @@ window.HOF = {
   },
   {
     n: 5, slug: "caitlin-chock", hero: 1, name: "Caitlin Chock",
+    ar: [0.68, 0.81, 1.00, 1.33, 0.67, 1.01],
     year: "Class of 2004", sport: "Cross Country",
     tagline: "Granite Bay's most decorated distance runner — state, national and world dominance",
     highlights: [
@@ -98,10 +122,21 @@ window.HOF = {
       ["World Stage", "5th at the IAAF World Junior Championships; set a national high school record"],
       ["National Champion", "USATF Junior 5000m winner"],
       ["Professional Career", "Signed with Nike and the Oregon Project"]
-    ]
+    ],
+    bio: {
+      paras: [
+        "Cait Chock stands as one of the most accomplished distance runners in Granite Bay High School history. A dominant force in both cross country and track, she left an indelible mark on the program and on the California high school running scene.",
+        "As a freshman in 2000 she announced herself immediately, earning Sacramento Bee All-City MVP honors in cross country and finishing 4th at the CIF State Meet in Division II in 17:48. She went on to win multiple Sac-Joaquin Section titles and ranked consistently among the state's elite.",
+        "In 2002, her junior year, she produced one of the most memorable performances in California cross country history: the Division II individual championship at the CIF State Meet in 17:30 — the fastest overall time of the day across all divisions. That same season she ran 17:15 at Crystal Springs, ranking among the all-time top performers on that historic course, and qualified for the Foot Locker National Championships. As a senior in 2003 she defended her title, winning Division II again in 17:21.",
+        "On the track, her senior year culminated in a historic achievement. At the 2004 IAAF World Junior Championships in Grosseto, Italy, she finished fifth in the 5,000 meters in 15:52.88 — becoming the first American high school athlete to break sixteen minutes and setting what was then the national high school record. She had won the USATF Junior National Championship in the 5,000 meters earlier that summer.",
+        "Immediately after graduating from Granite Bay she turned professional, signing with Nike and joining the prestigious Oregon Project under legendary coach Alberto Salazar. As one of only two female athletes on the team at the time, alongside Kara Goucher, she trained at the highest level of the sport and represented the United States in elite competition, including a 10,000-meter personal best of 34:19.61 in 2006. Though a serious injury in 2010 ultimately cut her professional career short, her high school legacy remains one of excellence, determination, and record-breaking performance."
+      ]
+    },
+    focus: { 1: "50% 10%", 2: "50% 28%", 5: "50% 12%", 6: "48% 30%" }
   },
   {
     n: 6, slug: "scott-roth", hero: 3, name: "Scott Roth",
+    ar: [0.77, 1.30, 0.78, 1.00, 1.00, 0.70],
     year: "Class of 2006", sport: "Track & Field — Pole Vault",
     tagline: "Elite NCAA vaulter and UW record-holder, now dedicated to teaching",
     highlights: [
@@ -125,6 +160,7 @@ window.HOF = {
   },
   {
     n: 7, slug: "alyssa-anderson", hero: 1, name: "Alyssa Anderson",
+    ar: [1.50, 1.50, 1.50, 1.50, 1.50, 1.50],
     year: "Class of 2008", sport: "Girls Swimming",
     tagline: "Olympic champion and Granite Bay freestyle standout",
     highlights: [
@@ -147,6 +183,7 @@ window.HOF = {
   },
   {
     n: 8, slug: "haley-anderson", hero: 1, name: "Haley Anderson",
+    ar: [1.13, 0.67, 1.50, 1.50, 1.50, 1.46],
     year: "Class of 2009", sport: "Girls Swimming",
     tagline: "Olympic open-water pioneer and Granite Bay distance star",
     highlights: [
@@ -156,10 +193,23 @@ window.HOF = {
       ["USC All-American", "NCAA champion in the 500 and 1650 free; multiple school records"],
       ["Three-Time Olympian", "2012, 2016, 2020 — with World Championship golds in the 5 km"],
       ["After Competition", "Retired in 2022; now works for the U.S. Olympic & Paralympic Committee"]
-    ]
+    ],
+    retro: {
+      author: "Alyssa Fried", role: "Proud older sister",
+      paras: [
+        "Tonight, it is my absolute honor to recognize my sister, Haley, as she is inducted into the Granite Bay High School Hall of Fame.",
+        "For those who know Haley, none of this comes as a surprise. She is a three-time U.S. Olympian, an Olympic silver medalist in the women's 10-kilometer marathon, and a multiple-time NCAA champion from her collegiate career as a USC Trojan. She has earned more international medals than we have time to list and remains one of the fiercest competitors I have ever known.",
+        "Haley is tenacious. She is determined. And, as her family knows very well, she is incredibly stubborn — which, it turns out, is a pretty useful quality when you're pursuing excellence at the highest level of sport. She is also someone you absolutely do not want to find yourself going head-to-head with in the final 50 meters of a race.",
+        "But what makes Haley so special goes far beyond what she has accomplished in the water. She is fiercely loyal to her friends, deeply devoted to her family, a wonderful wife to her husband, Chris, and the most incredible mother to her son, Leon. The same qualities that made her an extraordinary athlete — her dedication, discipline, resilience, and heart — are the very qualities she brings to the people she loves.",
+        "Haley is everything you hope an athlete will be: humble in her success, relentless in her pursuit of excellence, fiercely competitive, and a true steward of her craft. She has spent her life pushing herself to be better while representing her national teams, her community, and this school with tremendous pride.",
+        "Tonight, we celebrate an incredible athletic career and achievements that very few people will ever experience. But as her sister, I am even more proud of the person behind those accomplishments. Haley, you have given our family so many moments to cheer for, so many reasons to be proud, and an example of what it looks like to pursue something wholeheartedly.",
+        "It is my absolute honor and privilege to welcome my sister, Haley, into the Granite Bay High School Hall of Fame."
+      ]
+    }
   },
   {
     n: 9, slug: "ryan-hollingshead", hero: 2, name: "Ryan Hollingshead",
+    ar: [0.77, 0.67, 1.01, 1.51, 1.51, 0.75],
     year: "Class of 2009", sport: "Soccer",
     tagline: "From GBHS to MLS Cup glory — a career defined by versatility, leadership, and impact",
     highlights: [
@@ -183,6 +233,7 @@ window.HOF = {
   },
   {
     n: 10, slug: "ryan-loder", hero: 5, name: "Ryan Loder",
+    ar: [1.43, 1.54, 1.78, 1.78, 1.50, 0.84],
     year: "Class of 2009", sport: "Wrestling",
     tagline: "From GBHS CIF champ and UNI All-American to Ultimate Fighter",
     highlights: [
@@ -196,6 +247,7 @@ window.HOF = {
   },
   {
     n: 11, slug: "spencer-hamby", hero: 2, name: "Spencer Hamby",
+    ar: [0.75, 0.69, 1.01, 1.09, 0.69, 1.78],
     year: "Class of 2009", sport: "Water Polo",
     tagline: "A GBHS champion who became a Team USA standout and international pro",
     highlights: [
@@ -218,6 +270,7 @@ window.HOF = {
   },
   {
     n: 12, slug: "andrew-knapp", hero: 2, name: "Andrew Knapp",
+    ar: [1.50, 1.33, 1.20, 0.74, 1.42, 1.33],
     year: "Class of 2010", sport: "Baseball",
     tagline: "A Grizzly catcher who spent seven seasons behind the plate in the Major Leagues",
     highlights: [
@@ -228,10 +281,33 @@ window.HOF = {
       ["High MLB Draft Pick", "Selected 53rd overall by the Philadelphia Phillies in 2013"],
       ["Major League Career", "Seven MLB seasons; respected for leadership, game-calling, and catcher defense"]
     ],
-    note: "Knapp played 328 major league games for the Phillies, Pirates, Mariners, and Giants between 2017 and 2024. His father, Mike Knapp, caught 11 seasons in the minor leagues; his mother, Julie, suggested he learn to switch-hit when he was three or four years old."
+    retro: {
+      author: "Hannah Knapp", role: "Wife",
+      paras: [
+        "I've known Andrew since we were 13 years old. We didn't start dating until we were 17, and at the time, I truly didn't realize just how talented he was at baseball. I knew he was good, obviously, and I knew he was ambitious and smart — he was already committed to attending Cal — but I had no idea then how his talent would take us on a journey that very few people get to experience firsthand.",
+        "He climbed through the baseball ranks in college, was drafted, and quickly moved through the minor leagues. Along the way, he received constant recognition for his performance, including multiple All-Star selections. Then came the excitement of making the Major League Opening Day roster — year after year, for five consecutive years. The thrill of getting that phone call, followed by the rush to tell family and friends, book flights, pack our bags, and somehow make it to Opening Day on time, is a feeling that is hard to replicate.",
+        "Baseball took us to cities and parts of the country that life otherwise may never have taken us. From a summer league in Chatham on Cape Cod, to Spring Training in Clearwater with the Phillies, to the Toledo Mud Hens in Ohio, and all the Major League cities in between, our family and friends joined us on a journey to watch Andrew chase his dream.",
+        "There were so many joyous — and stressful — moments along the way that we now get to look back on forever and say, \"Dang, that was so cool.\" Like the night when about 15 of us were at Dodger Stadium to witness Andrew hit his first Major League home run. Or the time his parents were visiting us in Philadelphia and were there to see him hit a walk-off pinch-hit home run in the 13th inning on a very hot and humid July day. Or the first time we saw him take the field in a San Francisco Giants jersey at a ballpark we had been visiting as fans since we were young.",
+        "Throughout his career, Andrew's leadership, professionalism, and ability to adapt quickly were consistently recognized by his coaches and colleagues. Those qualities arguably played a major role in keeping him in the game for as long as he was, and they are the same traits that will continue to lead him to success in whatever comes next.",
+        "Looking back, I feel incredibly fortunate to have been there from the beginning — to have watched a talented, ambitious 17-year-old chase a dream and then have the privilege of experiencing so many of those dreams come true alongside him. I couldn't be prouder of everything he accomplished, both on and off the field, and I'm so grateful for the journey baseball gave us."
+      ]
+    },
+    bio: {
+      paras: [
+        "Andrew Knapp is a 2010 graduate of Granite Bay High School, where he was a standout two-sport athlete in baseball and football before going on to an accomplished collegiate and professional baseball career.",
+        "As a switch-hitting catcher for the Grizzlies, Knapp established himself as one of the top high school players in the Sacramento region. During his junior season in 2009 he batted .500 with 10 doubles, three triples, six home runs and 37 RBI. He was named Sierra Foothill League Most Valuable Player, earned Sacramento All-City and Sacramento Area All-Metro honors, and received MaxPreps Junior Player of the Year recognition. As a senior in 2010 he appeared in 29 games and batted .315 with a .426 on-base percentage. The Oakland Athletics selected him in the 41st round of that year's draft; he chose not to sign and continued his career at the University of California, Berkeley.",
+        "At Cal he developed into one of the top catchers in college baseball. As a freshman he was part of the Golden Bears' memorable run to the 2011 College World Series. That summer he played for the La Crosse Loggers of the Northwoods League and led the league with a .400 batting average, adding eight doubles, five home runs and 33 RBI and earning a place on Perfect Game's Summer Collegiate All-America Team. He later starred for the Chatham Anglers in the Cape Cod Baseball League, leading the team with eight home runs and earning league All-Star honors, and entered his junior season as a First-Team Preseason All-American by Baseball America.",
+        "In 2013 Knapp led the Golden Bears with a .350 average, 16 doubles, eight home runs and 41 RBI. His batting average ranked third in the Pac-12, earning him First-Team All-Pac-12 and Third-Team All-America honors as well as team MVP. Following that season the Philadelphia Phillies selected him in the second round of the 2013 MLB Draft, 53rd overall.",
+        "He established himself quickly as one of the Phillies' leading prospects — a 2014 Organization All-Star, then a breakout 2015 between Clearwater and Reading, hitting a combined .308 with 35 doubles, 13 home runs and 84 RBI, earning Florida State League Mid-Season All-Star honors and a selection to the Arizona Fall League Fall Stars Game. At the end of that season he received the Paul Owens Award as the Phillies' Minor League Player of the Year, and in 2016 he was an International League Mid-Season All-Star with Triple-A Lehigh Valley.",
+        "Knapp made his Major League debut with Philadelphia on April 6, 2017. He spent five seasons with the Phillies before continuing with the Pittsburgh Pirates, Seattle Mariners and San Francisco Giants. One of his strongest offensive seasons came in the shortened 2020 campaign, when he batted .278 with a .404 on-base percentage in 33 games. Over parts of seven Major League seasons he appeared in 328 games and recorded 158 hits, 13 home runs and 66 RBI, earning the trust of teammates and pitching staffs through his preparation, leadership, pitch framing and ability to call a game.",
+        "From Granite Bay High School to the Pac-12, the College World Series and ultimately Major League Baseball, Andrew Knapp's journey represents one of the most accomplished athletic careers in Granite Bay High School history."
+      ]
+    },
+    focus: { 4: "58% 12%" }
   },
   {
     n: 13, slug: "taylor-nelson", hero: 1, name: "Taylor Nelson",
+    ar: [0.88, 1.35, 0.97, 1.29, 1.34, 1.15],
     year: "Class of 2014", sport: "Girls Volleyball",
     tagline: "A GBHS setter whose work ethic, intelligence, and team-first mindset defined a championship legacy",
     highlights: [
@@ -255,6 +331,7 @@ window.HOF = {
   },
   {
     n: 14, slug: "ernie-cooper", hero: 5, name: "Ernie Cooper",
+    ar: [1.33, 1.33, 1.33, 1.33, 0.75, 1.50],
     year: "Varsity Head Football Coach", sport: "Football",
     tagline: "The architect of Granite Bay football",
     highlights: [
@@ -268,16 +345,20 @@ window.HOF = {
     retro: {
       author: "Ernie Cooper", role: "In his own words",
       paras: [
-        "I had just finished a long summer baseball season in early August, 1980 and was looking forward to the six weeks I had off before heading to Santa Clara University when I received a call from one of my Aptos High football coaches, Gary Sakamoto, who had just become the new head football coach at Santa Cruz High. Gary informed me that I was going to be coaching wide receivers and defensive backs for him until I left for school in late September — needless to say, I didn't get those six weeks off. I BLAME EVERYTHING ON GARY!",
-        "Once school started at SCU I would drive back to Santa Cruz on Fridays around 5pm after fall baseball practice ended and go in the press box on game nights and wear the headsets. I was hooked.",
-        "Gary moved over to Harbor High in the spring of 1983 and informed me that I was going to be his varsity defensive coordinator at the tender age of 21. I told Gary that I still had my senior year of college ahead of me and he said: \"No problem, get morning classes and drive back over the hill to Santa Cruz each afternoon; I will help you with gas money.\" Done deal.",
-        "When Ron Severson asked me in early 1996 to apply for the head football job at this new Granite Bay High School that was opening in the fall, I said: \"Ron, I will never leave Aptos and Santa Cruz County.\" Well, needless to say, Carol and I started the program at Granite Bay in the fall of 1996 along with Dale Mortensen, Mike Lynch, Chet Dickson and Keith Burcham. Our friendships last to this day.",
-        "I thought I had worked hard when I became head coach at Harbor High ten years earlier; I had no idea that starting a program from scratch was going to be five times harder. After nine straight SFL losses over our first two varsity seasons, a young man named Aaron Clift intercepted a ball at Bear River and ran it back for a touchdown and we won our first SFL game. We ended up 8-2 with our first group of seniors, and we still tell them to this day that the foundation they put down is what led to all our later successes.",
-        "After that interception, we won 36 out of our next 38 games, won two section championships and a Division II state title in 2000. I won't bore you with any more stats.",
-        "I don't have time to name all the coaches at GBHS that I had the privilege of coaching with, but these men taught, coached, counseled and loved up the young men from Granite Bay. A special shout out to all the TD Club presidents and members who spent so many hours supporting their sons and the football program; nobody did it better.",
-        "I retired in 2023 after 39 years as a high school teacher and coach, and I coached high school football for 40 years. I have been married 35 years to my beautiful wife Carol, but the real boss is our daughter Miko. I am a proud graduate of Santa Clara University with a degree in mathematics."
+        "I had just finished a long summer baseball season in early August, 1980 — we finished one game short of the 17/18-year-old World Series — and was looking forward to the six weeks I had off before heading to Santa Clara University for my freshman year and a competitive fall baseball season, when I received a call from one of my Aptos High football coaches, Gary Sakamoto, who had just become the new head football coach at Santa Cruz High. Gary informed me that I was going to be coaching wide receivers and defensive backs for him until I left for school in late September — needless to say, I didn't get those six weeks off. I BLAME EVERYTHING ON GARY!",
+        "I worked for Gary at Santa Cruz High from 1980 to 1982, juggling my summer baseball commitment with the high school summer football workouts. Once school started at SCU I would drive back to Santa Cruz on Fridays around 5pm after fall baseball practice ended and go up in the press box on game nights and wear the headsets. I was hooked.",
+        "A guy named Mike Macfarlane — look him up — showed up at SCU as a freshman in the fall of my junior year. He played catcher also. My baseball career ended at the end of fall ball in November 1982. Mike was big-time and I wasn't.",
+        "Gary moved over to Harbor High in Santa Cruz in the spring of 1983 and informed me that I was going to be his varsity defensive coordinator in the fall, at the tender age of 21. I told Gary that I still had my senior year of college ahead of me, and he said: \"No problem, get morning classes and drive back over the hill to Santa Cruz each afternoon; I will help you with gas money.\" Done deal. I was Gary's defensive coordinator at Harbor High from 1983 to 1985. When Gary moved on to Bear River High School in 1986 as their first head football coach he asked me to go along with him; there was no way I was leaving Santa Cruz County and the beach at 24 years old.",
+        "I became head football coach at Harbor High in the spring of 1986 and worked my tail off from 1986 to 1988. It was the hardest thing I had done to that point of my life and I loved every minute of it. I found my way back to Aptos High as defensive coordinator and worked for Jamie Townsend and Bill Garrison from 1989 to 1995 — Ron Severson was the principal during most of those years — and Jess Borjon and a young Dale Mortensen were on some of those staffs. We coached hard and played hard, both on and off the field, in the early years of that run. Then I met a hot hair stylist, Carol Sakoda, and my partying days were over.",
+        "When Ron Severson asked me in early 1996 to apply for the head football job at this new Granite Bay High School that was opening in the fall, I said: \"Ron, I will never leave Aptos and Santa Cruz County.\" Well, needless to say, Carol and I started the program at Granite Bay in the fall of 1996 along with Dale Mortensen, Mike Lynch, Chet Dickson and Keith Burcham. They are seated with me tonight and our friendships last to this day.",
+        "I thought I had worked hard when I became head coach at Harbor High ten years earlier; I had no idea that starting a program from scratch was going to be five times harder. Dale, Mike, Chet, Keith and I hung in there, and after nine straight SFL losses over our first two varsity seasons a young man named Aaron Clift intercepted a ball at Bear River and ran it back for a touchdown, and we won our first SFL game. We ended up 8-2 with our first group of seniors, and we still tell them to this day that the foundation they put down is what led to all our later successes.",
+        "By the way — after that interception we won 36 out of our next 38 games, won two section championships and a Division II state title in 2000, and had only three SFL losses over the next eight seasons. I won't bore you with any more stats.",
+        "I don't have time to name all the coaches at GBHS that I had the privilege of coaching with, but I will have them stand tonight to be recognized. These men taught, coached, counseled and loved up the young men from Granite Bay. A special shout out to all the TD Club presidents and members who spent so many hours supporting their sons and the football program; nobody did it better. And thank you, Rick Sutter, for your die-hard commitment to the GBHS football program.",
+        "I retired in 2023 after 39 years as a high school teacher and coach — Aptos High in 1984, Harbor High from 1985 to 1989, Aptos again from 1989 to 1996, and Granite Bay from 1996 to 2023. I coached high school football for 40 years: Santa Cruz High from 1980 to 1982, Harbor High from 1983 to 1988, Aptos High from 1989 to 1995, Granite Bay from 1996 to 2014 with a year off in 2013, head frosh coach at GBHS in 2017, 2018 and 2020, varsity running backs coach at GBHS in 2021 and 2022, and varsity offensive coordinator at Del Campo High in 2024.",
+        "I have been married 35 years to my beautiful wife Carol, but the real boss is our daughter Miko, 19 years old and a sophomore at Cal Poly, San Luis Obispo. I am a proud graduate of Santa Clara University with a degree in mathematics, class of 1984."
       ]
-    }
+    },
+    focus: { 5: "50% 38%" }
   }
   ]
 };
