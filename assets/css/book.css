@@ -580,5 +580,7 @@ body {
   .book, .leaf, .face { transition-duration: 1ms !important; }
 }
 
-/* A leaf caught mid-turn casts its own shadow across the spread. */
-.leaf.turning { filter: drop-shadow(-14px 8px 26px rgba(0,0,0,.42)); }
+/* A leaf caught mid-turn casts its own shadow across the spread. The shadow
+   goes on the faces, not the leaf: a `filter` on the leaf flattens its 3D
+   context, which disables backface culling and shows the pages mirrored. */
+.leaf.turning .face { box-shadow: -14px 8px 26px rgba(0,0,0,.42); }
