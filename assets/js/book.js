@@ -204,7 +204,9 @@
 
       case "retro":
         h = '<div class="eyebrow">Retrospective</div><div class="retro">';
-        a.retro.paras.forEach(function (t) { h += "<p>" + esc(t) + "</p>"; });
+        a.retro.paras.forEach(function (t) {
+          h += t.head ? "<h4>" + esc(t.head) + "</h4>" : "<p>" + esc(t) + "</p>";
+        });
         h += '</div><div class="byline">' + esc(a.retro.author) +
              "<span>" + esc(a.retro.role) + "</span></div>";
         page.innerHTML = h;

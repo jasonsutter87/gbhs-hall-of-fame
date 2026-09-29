@@ -39,7 +39,7 @@ as the original slide deck:
 5. **Biography** — the athlete's own career write-up, where one exists
 
 Most inductees have four pages. Anyone with both a retrospective and a biography
-(Andrew Knapp) gets five, and the spread padding absorbs it automatically. Where
+gets five, and the spread padding absorbs it automatically. Where
 neither exists yet the fourth page falls back to a career note or a feature photo.
 
 On desktop it renders as a two-page spread with a true 3D page turn. Below 900px it
@@ -100,6 +100,13 @@ retro: {
   author: "Coach Name", role: "Head Coach, Granite Bay",
   paras: [ "First paragraph…", "Second paragraph…" ]
 }
+```
+
+A long retrospective with more than one voice can split into sections — drop a
+`{ head: "…" }` entry into `paras` wherever a subheading belongs:
+
+```js
+paras: [ { head: "From Dad's Perspective" }, "…", { head: "From Mom's Perspective" }, "…" ]
 ```
 
 A biography is the same shape without the byline:
