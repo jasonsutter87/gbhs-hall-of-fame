@@ -115,8 +115,8 @@ A biography is the same shape without the byline:
 bio: { paras: [ "First paragraph…", "Second paragraph…" ] }
 ```
 
-The page types switch automatically. Ryan Loder is the one inductee still
-waiting on a bio — drop one in and his fourth page stops being a photo.
+The page types switch automatically: an inductee with neither a retrospective
+nor a bio gets a photo page in their place.
 
 ### Photo framing
 

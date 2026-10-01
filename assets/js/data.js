@@ -257,7 +257,17 @@ window.HOF = {
       ["National Performer", "Multiple MAC Wrestler of the Week honors and a consistent top-10 presence"],
       ["Ultimate Fighter Winner", "Captured a national television championship, showcasing elite toughness and skill"],
       ["Influential Coach", "Assistant roles at UNI and Wisconsin, shaping future collegiate stars"]
-    ]
+    ],
+    bio: {
+      paras: [
+        "Ryan Loder's wrestling success began well before high school, placing 4th at 9U Freestyle Nationals, 3rd at 12U Freestyle Nationals, and winning an 8th-grade Folkstyle State Championship. At Granite Bay, he established himself as one of the area's top wrestlers, becoming a four-time Freestyle State Champion, USA Wrestling Triple Crown winner, two-time high school state placer, three-time All-League wrestler, two-time All-Metro wrestler, and multiple-time Freestyle All-American.",
+        "Loder was also a standout football player throughout his time at Granite Bay. After an undefeated freshman season, his sophomore team went 9-1. As a junior, he helped Granite Bay win a Section Championship while recording 62 tackles and five sacks. He went on to earn All-League and All-Metro honors at linebacker, finishing his senior season with 97 tackles, 3.5 sacks, three fumble recoveries, and two defensive touchdowns.",
+        "After graduating from Granite Bay, Loder continued his wrestling career at the University of Northern Iowa. Competing at 184 pounds, he became a four-time NCAA Division I qualifier and earned All-American honors with a seventh-place finish at the 2013 NCAA Championships. He finished his UNI career with a 114-27 record, including 50 dual-meet victories, placing him among the program's all-time leaders in wins, winning percentage, and dual victories. During his career, he was also named Western Wrestling Conference Freshman of the Year, won a West Regional Championship, went undefeated in dual competition as a junior, and earned multiple conference Wrestler of the Week honors. He also earned both his bachelor's degree and MBA from UNI.",
+        "Loder continued competing after college, winning the British Open and placing sixth at the U.S. Open. He then began coaching wrestling at San Francisco State University, starting a coaching career that has allowed him to work with collegiate wrestlers and professional fighters.",
+        "He later transitioned to mixed martial arts, where his wrestling background became the foundation for another competitive chapter. Loder went on to win The Ultimate Fighter 32 and earn a contract with the UFC.",
+        "His induction into the Granite Bay High School Hall of Fame recognizes the beginning of a career built on competition, resilience, and a commitment to continually challenging himself at the highest level."
+      ]
+    }
   },
   {
     n: 11, slug: "spencer-hamby", hero: 2, name: "Spencer Hamby",
