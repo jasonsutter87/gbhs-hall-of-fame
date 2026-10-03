@@ -8,9 +8,9 @@
  "7":  {"slug":"alyssa-anderson",  "hero":3,  "pics":[3,10,5,8,9,14]},
  "8":  {"slug":"haley-anderson",   "hero":2,  "pics":[2,14,6,13,4,12]},
  "9":  {"slug":"ryan-hollingshead","hero":24, "pics":[0,24,21,22,8,6]},
- "10": {"slug":"ryan-loder",       "hero":4,  "pics":[8,10,3,1,4,13]},
+ "10": {"slug":"ryan-loder",       "hero":4,  "pics":["inductees/10 Ryan Loder 2009 Wrestling/Fwd__Pictures_for_Ryan_Loder_HOF/image15.png","inductees/10 Ryan Loder 2009 Wrestling/Fwd__Pictures_for_Ryan_Loder_HOF/image26.png","inductees/10 Ryan Loder 2009 Wrestling/Fwd__Pictures_for_Ryan_Loder_HOF/image24.png",1,4,13]},
  "11": {"slug":"spencer-hamby",    "hero":7,  "pics":[9,7,1,0,13,10]},
  "12": {"slug":"andrew-knapp",     "hero":10, "pics":[8,10,20,1,9,0]},
  "13": {"slug":"taylor-nelson",    "hero":6,  "pics":[6,0,3,11,2,9]},
- "14": {"slug":"ernie-cooper",     "hero":17, "pics":[9,1,15,14,17,2]}
+ "14": {"slug":"ernie-cooper",     "hero":17, "pics":["inductees/14 Ernie Cooper Football Coach/coop - Miko 2008.jpg","inductees/14 Ernie Cooper Football Coach/ernie-cooper-576-1152539697.jpg","inductees/14 Ernie Cooper Football Coach/1999 section.jpg",14,17,2]}
 }

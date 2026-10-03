@@ -247,7 +247,7 @@ window.HOF = {
   },
   {
     n: 10, slug: "ryan-loder", hero: 5, name: "Ryan Loder",
-    ar: [1.43, 1.54, 1.78, 1.78, 1.50, 0.84],
+    ar: [0.76, 0.69, 1.50, 1.78, 1.50, 0.84],
     year: "Class of 2009", sport: "Wrestling",
     tagline: "From GBHS CIF champ and UNI All-American to Ultimate Fighter",
     highlights: [
@@ -352,7 +352,7 @@ window.HOF = {
   },
   {
     n: 14, slug: "ernie-cooper", hero: 5, name: "Ernie Cooper",
-    ar: [1.33, 1.33, 1.33, 1.33, 0.75, 1.50],
+    ar: [1.54, 1.78, 1.47, 1.33, 0.75, 1.50],
     year: "Varsity Head Football Coach", sport: "Football",
     tagline: "The architect of Granite Bay football",
     highlights: [
